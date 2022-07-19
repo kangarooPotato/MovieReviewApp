@@ -16,3 +16,23 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+//
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('userinfo', function (){
+    return \Auth::User();
+});
+
+Route::get('movies/manage', 'MovieController@showDeleted');
+
+Route::get('movies/{movie}/forceDelete', 'MovieController@forceDelete');
+
+Route::get('movies/{movie}/restore', 'MovieController@restore');
+
+
+Route::resource('movies', 'MovieController');
+Route::resource('reviews', 'ReviewController');
+
+
