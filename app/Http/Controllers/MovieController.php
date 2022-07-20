@@ -9,17 +9,17 @@ use App\Movie;
 class MovieController extends Controller
 {
     public function index(){
-        $categories = Movie::paginate(3); Movie::all();
-        return view('categories/index', compact("categories"));
+        $movies = Movie::paginate(3); Movie::all();
+        return view('movies/index', compact("movies"));
     }
 
-    public function show($category){
-        $category = Movie::find($category);
-        return view('categories/show', compact("category"));
+    public function show($movie){
+        $movie = Movie::find($movie);
+        return view('movies/show', compact("movie"));
     }
 
     public function create(){
-        return view('categories/create');
+        return view('movies/create');
     }
 
     public function store(MovieRequest $request) {
@@ -27,46 +27,46 @@ class MovieController extends Controller
 
         Movie::create($formData);
 
-        return redirect('categories');
+        return redirect('movies');
     }
 
-    public function edit($category) {
-        $category = Movie::findOrFail($category);
-        return view('categories.edit', compact("category"));
+    public function edit($movie) {
+        $movie = Movie::findOrFail($movie);
+        return view('movies.edit', compact("movie"));
     }
 
-    public function update(MovieRequest $request, $category) {
+    public function update(MovieRequest $request, $movie) {
         $formData = $request->all();
-        $category = Movie::findOrFail($category);
-        $category->update($formData);
+        $movie = Movie::findOrFail($movie);
+        $movie->update($formData);
 
-        return redirect('categories');
+        return redirect('movies');
     }
 
     public function __construct() {
         $this->middleware('auth', ['only' => ['create', 'edit']]);
     }
 
-    public function destroy(Movie $category) {
-        $category->articles()->delete();
-        $category->delete();
-        return redirect('categories');
+    public function destroy(Movie $movie) {
+        $movie->reviews()->delete();
+        $movie->delete();
+        return redirect('movies');
     }
 
     public function showDeleted() {
-        $categories = Movie::onlyTrashed()->get();
-        return view('categories/manage', compact("categories"));
+        $movies = Movie::onlyTrashed()->get();
+        return view('movies/manage', compact("movies"));
     }
 
-    public function restore($category) {
-        Movie::withTrashed()->where('id', $category)->restore();
-        Movie::findOrFail($category)->articles()->restore();
+    public function restore($movie) {
+        Movie::withTrashed()->where('id', $movie)->restore();
+        Movie::findOrFail($movie)->reviews()->restore();
 
-        return redirect('categories');
+        return redirect('movies');
     }
 
-    public function forceDelete($category) {
-        Movie::onlyTrashed()->where('id', $category)->forceDelete();
-        return redirect('categories');
+    public function forceDelete($movie) {
+        Movie::onlyTrashed()->where('id', $movie)->forceDelete();
+        return redirect('movies');
     }
 }

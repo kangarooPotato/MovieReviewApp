@@ -14,8 +14,8 @@ class ReviewController extends Controller
         //return "This is my new Review Controller";
         //$testing = "Passing data...";
 
-        $articles = Review::paginate(7); DB::table('reviews')->get();
-        return view('articles/index', compact("reviews"));
+        $reviews = Review::paginate(7); DB::table('reviews')->get();
+        return view('reviews/index', compact("reviews"));
     }
 
     public function show($review) {
@@ -24,8 +24,6 @@ class ReviewController extends Controller
     }
 
     public function create() {
-//        $categories = Category::all()->pluck('name', 'id');
-//        return view('articles.create', compact("categories"));
         $movies = Movie::all()->pluck('name','id');
         $tags = Tag::all()->pluck('name','id');
         return view('reviews.create', compact("movies", "tags"));
@@ -35,7 +33,7 @@ class ReviewController extends Controller
         $movie = Movie::findOrFail($request->movie_id);
         $review = new Review($request->all());
         $review->author_id = 1;
-        $review->category()->associate($movie)->save();
+        $review->movie()->associate($movie)->save();
         $review->tags()->sync($request->tags);
         if ($request->hasFile('file') &&
             $request->file('file')->isValid()) {
@@ -47,9 +45,9 @@ class ReviewController extends Controller
     }
 
 
-//    public function edit($article) {
-//        $article = Article::findOrFail($article);
-//        return view('articles.edit', compact("article"));
+//    public function edit($review) {
+//        $review = Review::findOrFail($review);
+//        return view('reviews.edit', compact("review"));
 //    }
 
     public function destroy(Review $review) {

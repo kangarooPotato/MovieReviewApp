@@ -11,8 +11,8 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light"><a class="navbar-brand" href="/">Online Blog</a>
     <ul class="navbar-nav mr-auto">
-        <li class="nav-item"><a class="nav-link" href="{{ url('categories') }}">Categories</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ url('articles') }}">Articles</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url('movies') }}">Categories</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url('reviews') }}">Articles</a></li>
     </ul>
     <span class="navbar-text">
         Last posted article: {{ $lastPostedArticle }}<br>
