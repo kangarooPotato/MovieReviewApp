@@ -9,7 +9,7 @@ class Review extends Model
 {
     use SoftDeletes;
     protected $dates = ['deleted_at'];
-    protected $table = 'reivews';
+    protected $table = 'reviews';
 
     protected $fillable = [
         "title",
