@@ -1,16 +1,16 @@
 @extends('master')
 
 @section('content')
-    <h1>Edit Movie Form</h1>
+    <h1>Edit Review Form</h1>
 
     <form method="POST" action="
-        {{ action('MovieController@update', $movie->id) }}">
+        {{ action('ReviewController@update', $review->id) }}">
         {{ method_field('PATCH') }}
 
         @include('partials.reviewsForm',
         ['buttonName' => 'Update',
-        'name' => $movie->name,
-        'description' => $movie->description])
+        'name' => $review->title,
+        'description' => $review->body])
     </form>
     @include('partials.errors')
 

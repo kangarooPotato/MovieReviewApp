@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MovieRequest;
+use App\Http\Requests\ReviewRequest;
 use App\Rate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -31,26 +33,34 @@ class ReviewController extends Controller
         return view('reviews.create', compact("movies", "rates"));
     }
 
-//    public function store(Request $request) {
-//        $movie = Movie::findOrFail($request->movie_id);
-//        $review = new Review($request->all());
-//        $review->author_id = 1;
-//        $review->movie()->associate($movie)->save();
-//        $review->rates()->sync($request->rates);
-//        if ($request->hasFile('file') &&
-//            $request->file('file')->isValid()) {
-//            $path = $request->file->storePublicly('reviews', 'public');
-//            $review->file = $path;
-//            $review->save();
-//        }
-//        return redirect('reviews');
-//    }
+    public function update(ReviewRequest $request, $review) {
+        $formData = $request->all();
+        $review = Review::findOrFail($review);
+        $review->update($formData);
+
+        return redirect('reviews');
+    }
+
+    public function store(Request $request) {
+        $movie = Movie::findOrFail($request->movie_id);
+        $review = new Review($request->all());
+        $review->author_id = 1;
+        $review->movie()->associate($movie)->save();
+        $review->rates()->sync($request->rates);
+        if ($request->hasFile('file') &&
+            $request->file('file')->isValid()) {
+            $path = $request->file->storePublicly('reviews', 'public');
+            $review->file = $path;
+            $review->save();
+        }
+        return redirect('reviews');
+    }
 
 
-//    public function edit($article) {
-//        $review = Review::findOrFail($review);
-//        return view('reviews.edit', compact("review"));
-//    }
+    public function edit($review) {
+        $review = Review::findOrFail($review);
+        return view('reviews.edit', compact("review"));
+    }
 
     public function destroy(Review $review) {
         $review->delete();

@@ -9,7 +9,7 @@
         Title: {{ $review->title }}<br>
         {{ $review->body }}<br>
         Author ID: {{ $review->author_id }}<br>
-        
+
         @if(count($review->rates)>0)
             <br>Rate:
             @foreach($review->rates as $rate)

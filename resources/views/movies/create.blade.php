@@ -5,7 +5,7 @@
 
     <form method="POST" action="{{action ('MovieController@store')}}">
 
-        @include('partials.moviesForm',
+        @include('partials.reviewsForm',
         ['buttonName'  => 'Create',
         'title'        => old('title'),
         'description' => old('description')])
