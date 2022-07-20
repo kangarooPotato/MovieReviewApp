@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Tag;
+use App\Rate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Review;
@@ -25,8 +25,8 @@ class ReviewController extends Controller
 
     public function create() {
         $movies = Movie::all()->pluck('name','id');
-        $tags = Tag::all()->pluck('name','id');
-        return view('reviews.create', compact("movies", "tags"));
+        $rates = Rate::all()->pluck('rate','id');
+        return view('reviews.create', compact("movies", "rates"));
     }
 
     public function store(Request $request) {

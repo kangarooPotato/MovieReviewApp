@@ -9,13 +9,13 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light"><a class="navbar-brand" href="/">Online Blog</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light"><a class="navbar-brand" href="/">Every movie review in the world</a>
     <ul class="navbar-nav mr-auto">
-        <li class="nav-item"><a class="nav-link" href="{{ url('movies') }}">Categories</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ url('reviews') }}">Articles</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url('movies') }}">Movies</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url('reviews') }}">Reviews</a></li>
     </ul>
     <span class="navbar-text">
-        Last posted article: {{ $lastPostedArticle }}<br>
+        Last posted article: {{ $lastPostedReview }}<br>
     </span>
 
 </nav>

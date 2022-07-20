@@ -3,7 +3,7 @@
 
 @section('content')
 
-    <h1>Article #{{ $review->id }}</h1>
+    <h1>Review #{{ $review->id }}</h1>
         Name: {{ $review->title }}<br>
         Body: {{ $review->body }}<br>
         Author ID: {{ $review->author_id }}<br><br>

@@ -90,9 +90,9 @@
 {{--                    <a href="https://laravel-news.com">News</a>--}}
 {{--                    <a href="https://blog.laravel.com">Blog</a>--}}
 {{--                    <a href="https://nova.laravel.com">Nova</a>--}}
-                    <a href="https://forge.laravel.com">Movies</a>
-                    <a href="https://vapor.laravel.com">Reviews</a>
-                    <a href="https://github.com/laravel/laravel">Create Your Movie Review</a>
+                    <a href="{{ url('/movies') }}">Movies</a>
+                    <a href="{{ url('/reviews') }}">Reviews</a>
+                    <a href="{{ url('/reviews/create') }}">Create Your Movie Review</a>
                 </div>
             </div>
         </div>

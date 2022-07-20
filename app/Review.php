@@ -22,7 +22,7 @@ class Review extends Model
         return $this->belongsTo(Movie::class);
     }
 
-//    public function tags() {
-//        return $this->belongsToMany(Tag::class)->withTimestamps();
-//    }
+    public function rates() {
+        return $this->belongsToMany(Rate::class)->withTimestamps();
+    }
 }
