@@ -10,15 +10,16 @@
 
         Movie Title: {{ $review->movie->title }}<br>
         Description: {{ $review->movie->description }}<br><br>
+
     @if(count($review->rates)>0)
         <br>Rate:
     @foreach($review->rates as $rate)
-        {{ $tag->name }}
+        {{ $rate->name }}
     @endforeach
         @else <br> * No Rate
 @endif<hr>
 
-    <h2>Picture</h2>
+    <h2>Favourite Poster</h2>
     @isset($review->file)
         <img src="{{ asset('storage/' . $review->file) }}"
              width="100px" height="100px"><br>

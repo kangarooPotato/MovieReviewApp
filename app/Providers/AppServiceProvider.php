@@ -25,8 +25,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $name = Review::get()->last() ? Review::get()->last()->name : 'No Review';
-        View::share('lastPostedReview', $name);
+        $title = Review::get()->last() ? Review::get()->last()->title : 'No Review';
+        View::share('lastPostedReview', $title);
 
         View::composer('master', function ($view) {
             return $view->with('count', Review::count());

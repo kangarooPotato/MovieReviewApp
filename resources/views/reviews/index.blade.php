@@ -9,7 +9,14 @@
         Title: {{ $review->title }}<br>
         {{ $review->body }}<br>
         Author ID: {{ $review->author_id }}<br>
-
+        
+        @if(count($review->rates)>0)
+            <br>Rate:
+            @foreach($review->rates as $rate)
+                {{ $rate->name }}
+            @endforeach
+        @else <br> * No Rate
+        @endif
         <br>
 
 {{--        <form method="post" action="{{ action('ReviewController@destroy', $review->id) }}" >--}}
