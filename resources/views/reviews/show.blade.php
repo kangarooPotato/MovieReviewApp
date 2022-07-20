@@ -4,18 +4,18 @@
 @section('content')
 
     <h1>Review #{{ $review->id }}</h1>
-        Name: {{ $review->title }}<br>
+        Title: {{ $review->title }}<br>
         Body: {{ $review->body }}<br>
         Author ID: {{ $review->author_id }}<br><br>
 
-        Category: {{ $review->movie->title }}<br>
+        Movie Title: {{ $review->movie->title }}<br>
         Description: {{ $review->movie->description }}<br><br>
-    @if(count($review->tags)>0)
-        <br>Tags:
-    @foreach($review->tags as $tag)
+    @if(count($review->rates)>0)
+        <br>Rate:
+    @foreach($review->rates as $rate)
         {{ $tag->name }}
     @endforeach
-        @else <br> * No Tag
+        @else <br> * No Rate
 @endif<hr>
 
     <h2>Picture</h2>

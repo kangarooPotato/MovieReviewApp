@@ -3,7 +3,7 @@
 @section('content')
     <h1>New Article</h1>
 
-    <form method="POST" action="{{ action('ArticleController@store') }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ action('ReviewController@store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
         <label for="name">Name:</label>
         <input name="name" type="text"><br>
@@ -13,15 +13,15 @@
 
         <label for="category_id">Category</label>
         <select name="category_id">
-            @foreach($categories as $id => $category)
-                <option value="{{$id}}">{{$category}}</option>
+            @foreach($movies as $id => $movie)
+                <option value="{{$id}}">{{$movie}}</option>
             @endforeach
         </select><br>
 
-        <label for="tags">Tags</label>
-        <select multiple name="tags[]">
-            @foreach($tags as $id => $tag)
-                <option value="{{$id}}">{{$tag}}</option>
+        <label for="tags">Rates</label>
+        <select name="rates[]">
+            @foreach($rates as $id => $rate)
+                <option value="{{$id}}">{{$rate}}</option>
             @endforeach
         </select><br>
 
