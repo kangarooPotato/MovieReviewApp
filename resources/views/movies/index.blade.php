@@ -9,7 +9,7 @@
         Name: {{ $movie-> title }}<br>
         Description: {{ $movie->description }}<br><br>
 
-        <form method="post" action="{{ action('CategoryController@destroy', $movie->id) }}">
+        <form method="post" action="{{ action('MovieController@destroy', $movie->id) }}">
             {{ method_field('DELETE') }}
             {{ csrf_field() }}
             <input class="btn btn-outline-danger btn-sm" type="submit" value="Delete">
